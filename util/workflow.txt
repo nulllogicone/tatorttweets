@@ -1,0 +1,10 @@
+- check backup 
+- run search_tweets.py (with episode number & date) 
+- run metadata_from_wikipedia.py (with episode number) 
+- run generatevalues.py (with episode number) 
+	-> highlights.txt 
+	-> plot.js 
+- run wordcloud.js (with episode number) 
+	-> cloud.js 
+- test 
+- backup tweets.db 

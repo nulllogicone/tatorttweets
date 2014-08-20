@@ -1,0 +1,92 @@
+<form action="{{ url_for('work', selected=lfd)}}" method="POST">
+
+
+	<div class="control-group">
+		<div class="controls">
+
+			<table>
+				<tr valign="middle">
+					<td><label for="lfd"><i class="icon-search"></i>W&auml;hle
+							eine Folge &nbsp;</label></td>
+
+					<td><select name="lfd" id="lfd" style="width: 100%;"
+						onchange="this.form.submit()"> {% for entry in entries %}
+							<option id="{{ entry[0] }}" value="{{ entry[0] }}"
+								{% if (entry[0]|string==selected|string)%}selected{%endif%}>{{
+								entry[0] }} {{ entry[1] }}</option> {% endfor %}
+					</select></td>
+
+					<td>&nbsp; {% if selected %}{% for entry in entries %} {% if
+						(entry[0]|string==selected|string)%} Erstausstrahlung: {{ entry[3]
+						}} {%endif%} {% endfor %} {% else %} Erstausstrahlung: {{
+						entries[0][3]}} {% endif %}</td>
+
+
+
+
+
+				</tr>
+			</table>
+
+		</div>
+	</div>
+</form>
+
+
+
+
+<h2>Verlauf</h2>
+<div id="verlauf"></div>
+
+
+
+<br />
+<br />
+
+
+
+{% if selected %}
+
+
+
+
+
+<script
+	src="{{ url_for('.static',filename='js/plots/')}}{{ selected }}{{'_bars.js'}}"></script>
+
+<script
+	src="{{ url_for('.static',filename='js/plots/')}}{{ selected }}{{'_cloud.js'}}"></script>
+
+{% set path = 'highlights/highlights_' + selected + '.txt' %} {% else %}
+
+<script
+	src="{{ url_for('.static',filename='js/plots/')}}{{ entries[0][0] }}{{'_bars.js'}}"></script>
+
+<script
+	src="{{ url_for('.static',filename='js/plots/')}}{{ entries[0][0] }}{{'_cloud.js'}}"></script>
+
+{% set path = 'highlights/highlights_' ~ entries[0][0] + '.txt' %} {%
+endif %}
+
+<h2>Highlights</h2>
+
+{% include path %}
+
+<br />
+<br />
+
+
+
+<h2>Word cloud</h2>
+<div id="cloud"
+	style="width: 550px; height: 350px; border: 1px solid #ccc;"></div>
+
+
+
+
+
+<span style="color: red">{{error}}</span>
+<br />
+<br />
+
+

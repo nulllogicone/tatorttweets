@@ -1,0 +1,58 @@
+SELECT FROM_UNIXTIME( ROUND( UNIX_TIMESTAMP( DATE ) / ( 60 ) ) *60 ) AS timekey, COUNT(  `tweet` ) as count
+FROM  `tatorttweets` 
+WHERE lfd =910
+GROUP BY timekey
+
+
+
+
+AND  `date` >=  '2014-05-04 20:00:00'
+AND  `date` <=  '2014-05-04 22:00:00'
+AND `tweet` NOT LIKE '%RT @%'
+
+
+
+Topics: 
+
+SELECT `tweet`
+FROM  `tatorttweets` 
+WHERE lfd =910
+AND  `date` >=  '2014-05-04 20:26:00'
+AND  `date` <=  '2014-05-04 20:27:00'
+
+
+
+
+dupletten metadata: 
+
+SELECT
+    lfd, title, sender, erstausstrahlung, ermittler, fall, COUNT(*)
+FROM
+    metadata
+GROUP BY
+    lfd, title, sender, erstausstrahlung, ermittler, fall
+HAVING 
+    COUNT(*) > 1
+    
+    
+    
+SELECT DISTINCT
+ id, lfd, screen_name, date, tweet, COUNT(*)
+FROM
+ tatorttweets
+GROUP BY
+ lfd, screen_name, date, tweet
+HAVING 
+ COUNT(*) > 1
+ 
+
+delete from tatorttweets
+where id not in
+(
+	select min(id)
+ 	from tatorttweets
+ 	group by lfd, screen_name, date, tweet
+)
+
+
+    

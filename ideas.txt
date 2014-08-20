@@ -1,0 +1,65 @@
+MUST BE: in real time! 
+
+
+
+sentiment analysis 
+
+
+Gute Idee: 
+
+http://mechlab-engineering.de/2014/05/german-tatort-on-twitter-natural-language-processing-and-sentiment-analysis-with-python-pandas-and-nltk/
+
+
+
+
+
+dupletten: do not enter tweets that already exist!!! 
+
+
+
+download bootstrap file! 
+
+
+next tweet with numbers! (and describe content) 
+
+
+
+
+
+
+highlights into db!?!? 
+
+
+
+ich möchte den am öftesten retweeteten tweet 
+people with most tweets 
+
+parametrise .js!?!?
+
+
+
+generate .txt and .js files automatically! 
+
+
+
+Und alles automatisch, am besten in real time mit streaming!?!? cron jobs 
+
+
+
+filter rows before checking for peaks! 
+=> run all analyses again... 
+
+
+
+
+
+
+superschick: hover!! 
+
+
+auch interessant: andere hash-tags co-occurrence 
+& thought leaders tatort tweets 
+
+bei der community einschleimen 
+
+

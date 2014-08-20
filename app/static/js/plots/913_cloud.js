@@ -1,0 +1,35 @@
+	var word_list = [
+	/*    {text: "Lorem", weight: 13, link: "https://github.com/DukeLeNoir/jQCloud"},*/
+	{text: "kommt", weight: 41 , html: {"class": "vertical"}}, 
+	{text: "heutige", weight: 40 , html: {"class": "vertical"}}, 
+	{text: "sonntag", weight: 40 , html: {"class": "vertical"}}, 
+	{text: "handelt", weight: 37}, 
+	{text: "raffiniert", weight: 36 , html: {"class": "vertical"}}, 
+	{text: "abend", weight: 26}, 
+	{text: "uhr", weight: 25 , html: {"class": "vertical"}}, 
+	{text: "komischer", weight: 21 , html: {"class": "vertical"}}, 
+	{text: "halt", weight: 20 , html: {"class": "vertical"}}, 
+	{text: "mehmet", weight: 20}, 
+	{text: "ersten", weight: 19 , html: {"class": "vertical"}}, 
+	{text: "morgen", weight: 19}, 
+	{text: "glaube", weight: 18 , html: {"class": "vertical"}}, 
+	{text: "wegen", weight: 18 , html: {"class": "vertical"}}, 
+	{text: "migrationshintergrund", weight: 17 , html: {"class": "vertical"}}, 
+	{text: "neue", weight: 17}, 
+	{text: "bitte", weight: 16 , html: {"class": "vertical"}}, 
+	{text: "klischee", weight: 16 , html: {"class": "vertical"}}, 
+	{text: "gibts", weight: 15 , html: {"class": "vertical"}}, 
+	{text: "guten", weight: 15}, 
+	{text: "kamerun", weight: 15 , html: {"class": "vertical"}}, 
+	{text: "leiche", weight: 15}, 
+	{text: "irgendwie", weight: 14 , html: {"class": "vertical"}}, 
+	{text: "neuen", weight: 14 , html: {"class": "vertical"}}, 
+	{text: "diesmal", weight: 13 , html: {"class": "vertical"}}, 
+	{text: "statt", weight: 13 , html: {"class": "vertical"}}, 
+	{text: "titelthema", weight: 13}, 
+	{text: "echt", weight: 12}, 
+	{text: "sag", weight: 12}, 
+	{text: "sinn", weight: 12} ];
+	$(function() {
+		$("#cloud").jQCloud(word_list);
+	});
