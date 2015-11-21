@@ -5,7 +5,7 @@ import sys
 sys.path.append("path")
 
 from flup.server.fcgi import WSGIServer
-from app import app
+from FlaskWebProject import app
 
 class ScriptNameStripper(object):
    def __init__(self, app):

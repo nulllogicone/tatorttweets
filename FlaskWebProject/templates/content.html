@@ -1,0 +1,100 @@
+<form action="{{ url_for('work', selected=lfd)}}" method="POST">
+
+
+	<div class="control-group">
+		<div class="controls">
+
+
+
+
+
+			<table>
+				<tr valign="middle">
+					<td><label for="lfd"><i class="icon-search"></i>W&auml;hle
+							eine Folge &nbsp;</label></td>
+
+					<td><select name="lfd" id="lfd" style="width: 100%;"
+						onchange="this.form.submit()"> {% for entry in entries %}
+							<option id="{{ entry[0] }}" value="{{ entry[0] }}"
+								{% if (entry[0]|string==selected|string)%}selected{%endif%}>{{
+								entry[0] }} {{ entry[1] }}</option> {% endfor %}
+					</select></td>
+
+					<td>&nbsp; {% if selected %}{% for entry in entries %} {% if
+						(entry[0]|string==selected|string)%} Erstausstrahlung: {{ entry[3]
+						}} {%endif%} {% endfor %} {% else %} Erstausstrahlung: {{
+						entries[0][3]}} {% endif %}</td>
+
+				</tr>
+			</table>
+
+		</div>
+	</div>
+</form>
+
+
+{% if selected %} 
+<script src="{{'static/js/plots/cloud/cloud_'}}{{ selected }}{{'.js'}}"></script>
+{%set top_tweetspath = 'top_tweets/top_tweets_' + selected + '.txt' %} 
+{%set top_retweetspath = 'top_retweets/top_retweets_' + selected + '.txt' %} 
+{% else %} 
+<script src="{{'static/js/plots/cloud/cloud_'}}{{ entries[0][0] }}{{'.js'}}"></script>
+{% set top_tweetspath = 'top_tweets/top_tweets_' ~entries[0][0] + '.txt' %} 
+{% set top_retweetspath = 'top_retweets/top_retweets_' ~ entries[0][0] + '.txt' %} 
+{% endif %}
+
+
+<table style="width: 900px" x>
+	<tr>
+		<td width="70%">
+
+			<h2><a name="Cloud"></a>Twitterwolke</h2>
+			<div id="cloud" style="width: 550px; height: 350px; border: 1px solid #ccc;"></div>
+			<br /> 
+			<br />
+
+			<h2>SEK (die meisten tweets)</h2> 
+			{% include top_tweetspath %} 
+			<br /> 
+			<br />
+
+			<h2><a name="Strike"></a>Ins Schwarze getwittert (am meisten retweeted)</h2> 
+			{% include top_retweetspath %} 
+			<br /> 
+			<br />
+
+			<h2><a name="Verlauf"></a>Spannungsbogen</h2>
+			<div id="verlauf"></div> 
+			<br /> 
+			<br /> 
+			{% if selected %} 
+			<script src="{{'static/js/plots/bars/bars_'}}{{ selected }}{{'.js'}}"></script>
+			{% else %} 
+			<script src="{{'static/js/plots/bars/bars_'}}{{ entries[0][0] }}{{'.js'}}"></script>
+			{% endif %}
+			
+			
+			
+			<span style="color: red">{{error}}</span></td>
+		<td width="30%"><a class="twitter-timeline"
+			href="https://twitter.com/tatortstats"
+			data-widget-id="511451062352347137">Tweets by @tatortstats</a> <script>
+				!function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
+							.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + "://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, "script", "twitter-wjs");
+			</script></td>
+	</tr>
+</table>
+
+
+<br />
+<br />
+
+

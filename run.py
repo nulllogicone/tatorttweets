@@ -1,4 +1,4 @@
 #!/usr/local/bin/python2.7
 
-from app import app
+from FlaskWebProject import app
 app.run(host='0.0.0.0')
