@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<title>Tatort Tweets</title>
+<link rel="shortcut icon" type="image/png" href="static/img/favicon.ico" />
+<link rel="stylesheet" href="static/css/bootstrap.css" />
+<link rel="stylesheet" href="static/css/commit.css" />
+<link rel="stylesheet" href="static/css/style.css" />
+<link rel="stylesheet" href="static/css/jqcloud.css" />
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+<script src="http://d3js.org/d3.v2.min.js?2.10.0"></script>
+<script src="static/js/d3.v3.js"></script>
+<script src="static/js/jqcloud-1.0.4.js"></script>
+<script src="http://d3js.org/d3.v2.min.js?2.10.0"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="page-header">
+					<h1>
+						<small>#Tatort Tweets - <a href="https://twitter.com/tatortstats">@tatortstats</a></small>
+					</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<!-- 					<h4>Explore Linked Open Data from SPARQL endpoints</h4> -->
+				{% include 'content.html' %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<hr>
+				<p>
+					Copyright (c) 2014, <a href="http://kathrin-dentler.de/">Kathrin
+						Dentler</a>. Powered by <a href="http://flask.pocoo.org/">Flask</a>, <a
+						href="http://d3js.org/">D3.js</a>, <a
+						href="http://getbootstrap.com/">Bootstrap</a>, <a
+						href="http://www.jquerycode.com/data/jqcloud/">jqCloud</a>, <a
+						href="http://www.sqlite.org/">sqlite</a> and <a
+						href="http://www.wikipedia.org/">Wikipedia</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 	<script type="application/x-javascript">
+        $(document).ready(function() {
+            $("#loading").toggle();
+            $("#noresponse").toggle();
+        });
+	</script> -->
+</body>
+</html>
