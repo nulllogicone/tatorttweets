@@ -1,7 +1,6 @@
 #!/usr/local/bin/python2.7
 # -*- coding: utf-8 -*-
 
-
 def main(episodenumber, live_tweet, testmode):
     
     import sqlite3 as lite
@@ -10,17 +9,16 @@ def main(episodenumber, live_tweet, testmode):
     import warnings
     warnings.filterwarnings("ignore")
 
-    filename = os.path.join(os.path.dirname(__file__), '../tweets.db')
+    dir = os.path.dirname(__file__)
+    filename = os.path.join(dir, '../tweets.db')
     con = lite.connect(filename)
     
-        
     import twitterconfig 
     twitter = Twython(twitterconfig.APP_KEY, twitterconfig.APP_SECRET, twitterconfig.OAUTH_TOKEN, twitterconfig.OAUTH_TOKEN_SECRET)
 
 
     top_tweets = '' 
     tweet = '#Tatort Twitter-SEK: '
-    
     
     with con:
         
@@ -62,6 +60,6 @@ def main(episodenumber, live_tweet, testmode):
 
 
 if __name__ == "__main__":
-    main()           
+    main(962, False, False)           
 
 

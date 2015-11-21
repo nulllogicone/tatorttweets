@@ -13,7 +13,8 @@ def main(episodenumber, live_tweet, testmode):
     import twitterconfig 
     twitter = Twython(twitterconfig.APP_KEY, twitterconfig.APP_SECRET, twitterconfig.OAUTH_TOKEN, twitterconfig.OAUTH_TOKEN_SECRET)
 
-    filename = os.path.join(os.path.dirname(__file__), '../tweets.db')
+    dir = os.path.dirname(__file__)
+    filename = os.path.join(dir, '../tweets.db')
     con = lite.connect(filename)
     
     with con:

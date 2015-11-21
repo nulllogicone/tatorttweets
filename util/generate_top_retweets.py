@@ -10,7 +10,8 @@ def main(episodenumber, live_tweet, testmode):
     import warnings
     warnings.filterwarnings("ignore")
 
-    filename = os.path.join(os.path.dirname(__file__), '../tweets.db')
+    dir = os.path.dirname(__file__)
+    filename = os.path.join(dir, '../tweets.db')
     con = lite.connect(filename)
     
     import twitterconfig 

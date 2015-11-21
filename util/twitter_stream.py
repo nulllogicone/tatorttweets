@@ -8,6 +8,7 @@ import os
 import sys
 import urllib3
 import time
+import generate_all 
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -58,8 +59,7 @@ class MyStreamer(TwythonStreamer):
                 
                 text = tweet['text']  
                 tweettime = datetime.strptime(tweet['created_at'], '%a %b %d %H:%M:%S +0000 %Y')
-                tweettime += timedelta(hours=1)
-                
+                tweettime += timedelta(hours=1) # winter time 
     #           tweettime += timedelta(hours=2)  # summer time 
     
     
@@ -108,7 +108,6 @@ class MyStreamer(TwythonStreamer):
                     else:
                         twitt_times = self.retweets[text] + 1
                     self.retweets[text] = twitt_times
-    #                 print '\tRetweet: (' + str(twitt_times) + ') ' + tweet['user']['screen_name'].encode('utf-8') + ': ' + tweet['text'].encode('utf-8') + ' (' + str(tweettime) + ')'    
 
             
         except Exception,e:
@@ -122,14 +121,10 @@ class MyStreamer(TwythonStreamer):
         print 'time since start: ' + str(time.time() - start) + ' seconds'
         print 'Error: ' + str(status_code)
         sys.stdout.flush()
-                    
-        # Want to stop trying to get data because of the error?
-        # Uncomment the next line!
-        # self.disconnect()
-
 
 
 with con:
+    generate_all.main()
     
     cur = con.cursor()
     command = 'SELECT * FROM metadata ORDER BY lfd DESC LIMIT 10' 
@@ -149,5 +144,5 @@ with con:
 
 
 stream = MyStreamer(twitterconfig.APP_KEY, twitterconfig.APP_SECRET, twitterconfig.OAUTH_TOKEN, twitterconfig.OAUTH_TOKEN_SECRET)
-stream.statuses.filter(track='#Amsterdam')
+stream.statuses.filter(track='#Tatort')
 

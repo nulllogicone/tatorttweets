@@ -12,10 +12,10 @@ global done
  
 
 # http://www.tatort-fundus.de/web/rangliste/folgen-wertungen/rangliste-auswertung/aktueller-zeitpunkt.html
-lfd = 924
-dateFrom = '2014-11-30';  # Inclusive (YYYY-MM-DD)
-dateTo = '2014-12-01';  # Exclusive (YYYY-MM-DD)
-keyword = '#tatort'; 
+lfd = 962
+dateFrom = '2015-11-15';  # Inclusive (YYYY-MM-DD)
+dateTo = '2015-11-16';  # Exclusive (YYYY-MM-DD)
+keyword = '#Tatort'; 
 tweetsXiteration = 100;  # Where 100 is the max
 
 
@@ -31,20 +31,19 @@ def query_and_process_results():
     
     oldMaxID = maxID
 
-    timeofinterest = datetime(2014, 11, 30, 20, 00)
-#     timeofinterest += timedelta(hours=1)
-    
+    timeofinterest = datetime(2015, 11, 15, 20, 00)
+    timeofinterest += timedelta(hours=1) # winter time
+
     if (maxID == 0): 
         response = twitter.search(q=keyword, lang="de", count=tweetsXiteration,
                               since=dateFrom, until=dateTo,
                               include_entities=1, result_type='recent');   
-                              
+
     else: 
         response = twitter.search(q=keyword, lang="de", count=tweetsXiteration,
                               since=dateFrom, until=dateTo, max_id=maxID,
                               include_entities=1, result_type='recent');   
-        
-    
+
     for tweet in response['statuses']:
         
         mytime = datetime.strptime(tweet['created_at'], '%a %b %d %H:%M:%S +0000 %Y')
@@ -75,7 +74,7 @@ conn.commit()
 
 
 countTweets = 0 
-maxID = 539146737060175874
+maxID = 0
 done = 'false'; 
 
 
