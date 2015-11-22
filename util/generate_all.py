@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 import os
 
 episodenumber = 962
-testmode = False
+testmode = True
 live_tweet = False 
 
 dir = os.path.dirname(__file__)
@@ -37,7 +37,7 @@ def main():
                 episodenumber = row[0]
                 break
           
-    # episodenumber = 962
+#     episodenumber = 962
     # 
     # if testmode: print episodenumber
     # if testmode: print live_tweet
