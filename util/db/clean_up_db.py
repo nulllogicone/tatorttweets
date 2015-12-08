@@ -9,6 +9,8 @@ con = lite.connect('../../tweets.db')
 
 with con:
     cur = con.cursor()
+    
+    
 
 
 

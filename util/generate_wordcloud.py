@@ -196,5 +196,5 @@ def main(episodenumber, live_tweet, testmode):
 
 
 if __name__ == "__main__":
-    main()
+    main(964, False, True)   
     

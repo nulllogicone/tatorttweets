@@ -14,8 +14,8 @@ import sqlite3 as lite
 from datetime import datetime, timedelta
 import os
 
-episodenumber = 962
-testmode = False
+episodenumber = 964
+testmode = True
 live_tweet = False 
 
 dir = os.path.dirname(__file__)
@@ -36,8 +36,8 @@ def main():
                 if testmode: print date
                 episodenumber = row[0]
                 break
-          
-#     episodenumber = 963
+
+    episodenumber = 964
     # 
     # if testmode: print episodenumber
     # if testmode: print live_tweet
