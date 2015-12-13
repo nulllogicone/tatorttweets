@@ -1,7 +1,0 @@
-now: 2015-12-06 19:59:34.603488
-stoppingtime: 2015-12-06 21:59:34.603488
-episodenumber: 965
-date: 2015-12-06 00:00:00
-
-disconnect
-time since start: 7200.66322303 seconds

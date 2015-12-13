@@ -68,11 +68,13 @@ def main(episodenumber, live_tweet, testmode):
         cloudstring = ""; 
         vocabulary = freq_dist.keys()
         for v in vocabulary[:85]: 
-        
+            
+            string = str(freq_dist[v]).replace("\"", "")
+                    
             if  (bool(random.getrandbits(1))): 
-                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + str(freq_dist[v]) + "}, \n"
+                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + string + "}, \n"
             else: 
-                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + str(freq_dist[v]) + " , html: {\"class\": \"vertical\"}}, \n"
+                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + string + " , html: {\"class\": \"vertical\"}}, \n"
         if testmode: print cloudstring
         cloudstring = cloudstring.replace("\"\"", "\"")
     
@@ -174,7 +176,6 @@ def main(episodenumber, live_tweet, testmode):
                 for word in samples:
                     features['contains(%s)' % word.decode('utf-8')] = (word in tweet)
                 return features
-    
     
             trainingfeatureset = [(tweet_features(word), sentiment) for (word, sentiment) in training_set]
             classifier = nltk.NaiveBayesClassifier.train(trainingfeatureset)

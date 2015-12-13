@@ -8,6 +8,7 @@ import os
 import sys
 import urllib3
 import time
+import generate_all
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -129,6 +130,7 @@ with con:
     cur.execute(command)
     rows = cur.fetchall()
     for row in rows:
+        print row[0]
         date = datetime.strptime(row[3], '%Y-%m-%d')
         today = date.today()
         
@@ -137,8 +139,11 @@ with con:
             print 'episodenumber: ' + str(episodenumber)
             print 'date: ' + str(date)
             print 
+            generate_all.main(episodenumber, False, False)
             break
-
+        
+            
+        
 
 
 stream = MyStreamer(twitterconfig.APP_KEY, twitterconfig.APP_SECRET, twitterconfig.OAUTH_TOKEN, twitterconfig.OAUTH_TOKEN_SECRET)
