@@ -8,7 +8,6 @@ import os
 import sys
 import urllib3
 import time
-import generate_all 
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -124,7 +123,6 @@ class MyStreamer(TwythonStreamer):
 
 
 with con:
-    generate_all.main()
     
     cur = con.cursor()
     command = 'SELECT * FROM metadata ORDER BY lfd DESC LIMIT 10' 
