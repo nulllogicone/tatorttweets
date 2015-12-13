@@ -53,6 +53,7 @@ def main(episodenumber, live_tweet, testmode):
 #                     print oembed['html']
                     try: 
                         twitter.create_favorite(id=tweet['id'])
+                        twitter.retweet(id=tweet['id'])
                     except Exception as e: 
                         if testmode: print e
 
