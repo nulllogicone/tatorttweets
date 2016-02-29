@@ -17,8 +17,9 @@ warnings.filterwarnings("ignore")
 
 
 def main(episodenumber, live_tweet, testmode):
-        
-    filename = os.path.join(os.path.dirname(__file__), '../tweets.db')
+    
+    dir = os.path.dirname(__file__)
+    filename = os.path.join(dir, '../tweets.db')
     con = lite.connect(filename)
 
     import twitterconfig 
@@ -67,11 +68,13 @@ def main(episodenumber, live_tweet, testmode):
         cloudstring = ""; 
         vocabulary = freq_dist.keys()
         for v in vocabulary[:85]: 
-        
+            
+            string = str(freq_dist[v]).replace("\"", "")
+                    
             if  (bool(random.getrandbits(1))): 
-                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + str(freq_dist[v]) + "}, \n"
+                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + string + "}, \n"
             else: 
-                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + str(freq_dist[v]) + " , html: {\"class\": \"vertical\"}}, \n"
+                cloudstring = cloudstring + "{text: \"" + v + "\", weight: " + string + " , html: {\"class\": \"vertical\"}}, \n"
         if testmode: print cloudstring
         cloudstring = cloudstring.replace("\"\"", "\"")
     
@@ -174,7 +177,6 @@ def main(episodenumber, live_tweet, testmode):
                     features['contains(%s)' % word.decode('utf-8')] = (word in tweet)
                 return features
     
-    
             trainingfeatureset = [(tweet_features(word), sentiment) for (word, sentiment) in training_set]
             classifier = nltk.NaiveBayesClassifier.train(trainingfeatureset)
             classifier.show_most_informative_features(14)
@@ -195,5 +197,5 @@ def main(episodenumber, live_tweet, testmode):
 
 
 if __name__ == "__main__":
-    main()
+    main(964, False, True)   
     
